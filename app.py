@@ -11,8 +11,8 @@ from test import decrypt
 with open("config/settings.yaml") as f:
     config = yaml.safe_load(f)
 
-YOUTUBE_API_KEY = decrypt(config["youtube_api_key"])
-GEMINI_API_KEY = decrypt(config["gemini_api_key"])
+YOUTUBE_API_KEY = decrypt(st.secrets["api_keys"]["youtube_api_key"])
+GEMINI_API_KEY = decrypt(st.secrets["api_keys"]["gemini_api_key"])
 MAX_COMMENTS = config["max_comments"]
 
 def fetch_comments(video_id, api_key, max_comments=200):
