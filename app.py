@@ -72,10 +72,12 @@ if st.button("Analyze") and video_id:
     # st.download_button("📥 Download Comments", "\n".join(comments), "comments.txt")
     
 
-    st.subheader("🧠 Summary")
-    configure_gemini(GEMINI_API_KEY)
-    summary = analyze_comments_with_gemini_flash(comments)
+    with st.spinner("🔍 Analyzing comments ..."):
+        configure_gemini(GEMINI_API_KEY)
+        summary = analyze_comments_with_gemini_flash(comments)
+    st.title("👥 People's Report ")
     st.markdown(summary)
+    
     # st.download_button("📥 Download Summary", summary, "summary.txt")
     
     st.subheader("📈 Sentiment Analysis")
