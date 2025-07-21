@@ -5,13 +5,14 @@ import plotly.express as px
 import yaml
 from src.llm.gemini_api import configure_gemini, analyze_comments_with_gemini_flash
 import re
+from test import decrypt
 
 # Load config
 with open("config/settings.yaml") as f:
     config = yaml.safe_load(f)
 
-YOUTUBE_API_KEY = config["youtube_api_key"]
-GEMINI_API_KEY = config["gemini_api_key"]
+YOUTUBE_API_KEY = decrypt(config["youtube_api_key"])
+GEMINI_API_KEY = decrypt(config["gemini_api_key"])
 MAX_COMMENTS = config["max_comments"]
 
 def fetch_comments(video_id, api_key, max_comments=200):

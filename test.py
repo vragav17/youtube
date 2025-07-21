@@ -1,8 +1,12 @@
-import google.generativeai as genai
+def encrypt(text, shift=3):
+    result = ""
+    for char in text:
+        if char.isalpha():
+            start = ord('A') if char.isupper() else ord('a')
+            result += chr((ord(char) - start + shift) % 26 + start)
+        else:
+            result += char
+    return result
 
-genai.configure(api_key="AIzaSyBfJb1um3rIBIs2q59CKbNqafuw-kWOSkc")
-
-models = genai.list_models()
-
-for model in models:
-    print(model.name, model.supported_generation_methods)
+def decrypt(text, shift=3):
+    return encrypt(text, -shift)
