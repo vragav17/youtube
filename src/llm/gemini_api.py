@@ -7,7 +7,7 @@ def _format_comments_with_usernames(comments_dict):
     return "\n".join(f"{user}: {comment}" for user, comment in comments_dict.items())
 
 def analyze_comments_with_gemini_flash(comments_dict):
-    model = genai.GenerativeModel('models/gemini-1.5-flash-latest')
+    model = genai.GenerativeModel('gemini-flash-latest')
     formatted_comments = "\n".join(comments_dict)
     prompt = f"""
 You are an intelligent assistant for a Tamil-based YouTube finance channel that focuses on stock market analysis, mutual fund advice, personal finance Q&A, and economic commentary. The comments may contain English, Tamil, or a mix (Tanglish), and they reflect the opinions, questions, and emotions of a highly engaged retail investor audience.
